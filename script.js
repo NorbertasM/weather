@@ -57,6 +57,21 @@ const weather = {
 
       return element
     },
+    createElements: function ({ name, temp, feels_like, humidity, icon, description, speed, sunrise, sunset, deg }) {            
+      return [
+        this.makeElement({ classString: 'city', text: `Oras mieste ${name}`, type: 'h2' }),
+        this.makeElement({ classString: 'temp', text: `${temp}°C`, type: 'div' }),
+        this.makeElement({ classString: 'feelsLike', text: `${feels_like}°C`,  type: 'div' }),
+        this.makeElement({ classString: 'icon', img: `http://openweathermap.org/img/wn/${icon}@2x.png`, type: 'img' }),
+        this.makeElement({ classString: 'description', text: description, type: 'div' }),
+        this.makeElement({ classString: 'humidity', text: `Oro dregnumas: ${humidity}%`, type: 'div' }),
+        this.makeElement({ classString: 'wind', text: `Vejo greitis: ${speed}m/s`, type: 'div' }),
+        this.makeElement({ classString: 'sunrise', text: `Saulė teka: ${getTime(sunrise)}`, type: 'div' }),
+        this.makeElement({ classString: 'sunset', text: `Saulė leidžiasi: ${getTime(sunset)}`, type: 'div' }),
+        this.makeElement({ classString: 'daylength', text: `Dienos ilgumas: ${getDayLength(sunset - sunrise)}`, type: 'div' }),
+        this.makeElement({ classString: 'windDirection', text: `Vėjo kryptis: ${getWindDirection(deg)}`, type: 'div' }),
+      ]
+    },
     displayForecast: function(data) {
       const { sunrise, sunset, temp, feels_like, humidity, wind_speed, wind_deg, weather } = data
       const { day, min, max, night, eve, morn } = temp
