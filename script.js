@@ -70,7 +70,7 @@ const weather = {
         this.makeElement({ classString: 'sunset', text: `Saulė leidžiasi: ${getTime(sunset)}`, type: 'div' }),
         this.makeElement({ classString: 'daylength', text: `Dienos ilgumas: ${getDayLength(sunset - sunrise)}`, type: 'div' }),
         this.makeElement({ classString: 'windDirection', text: `Vėjo kryptis: ${getWindDirection(deg)}`, type: 'div' }),
-      ]
+    console.log('a')
     },
     displayForecast: function(data) {
       const { sunrise, sunset, temp, feels_like, humidity, wind_speed, wind_deg, weather } = data
